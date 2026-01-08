@@ -11,9 +11,30 @@ import Link from "next/link";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [user, setUser] = useState<any>(null);
   const router = useRouter();
   const supabase = createClient();
+
+  useEffect(() => {
+    const handlePreloaderDismiss = () => {
+      // Wait for preloader animation to mostly complete before switching colors
+      setTimeout(() => setIsDarkTheme(true), 900);
+    };
+    
+    const handlePreloaderShow = () => {
+      // Immediately switch back to white when preloader starts showing
+      setIsDarkTheme(false);
+    };
+
+    window.addEventListener("preloader:dismiss", handlePreloaderDismiss);
+    window.addEventListener("preloader:show", handlePreloaderShow);
+    
+    return () => {
+      window.removeEventListener("preloader:dismiss", handlePreloaderDismiss);
+      window.removeEventListener("preloader:show", handlePreloaderShow);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -48,13 +69,17 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full h-[100px] z-[100] transition-colors duration-500 bg-transparent mix-blend-difference pointer-events-none">
-      <div className="relative flex items-center justify-between h-full px-[20px] lg:px-[40px] text-white w-full">
+    <header className="fixed top-0 left-0 w-full h-[100px] z-[100] transition-colors duration-500 bg-transparent pointer-events-none">
+      <div className={`relative flex items-center justify-between h-full px-[20px] lg:px-[40px] w-full transition-colors duration-500 ${isDarkTheme ? "text-black" : "text-white"}`}>
         {/* Left: Scroll to Top */}
         <div className="flex items-center gap-4 pointer-events-auto">
           <button
             onClick={scrollToTop}
-            className={`flex items-center justify-center w-[40px] h-[40px] border border-white/20 rounded-none bg-transparent hover:bg-white hover:text-black transition-all duration-300 ${
+            className={`flex items-center justify-center w-[40px] h-[40px] border rounded-none bg-transparent transition-all duration-500 ${
+              isDarkTheme 
+                ? "border-black/20 hover:bg-black hover:text-white" 
+                : "border-white/20 hover:bg-white hover:text-black"
+            } ${
               isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
             }`}
             aria-label="Scroll to top"
@@ -71,17 +96,17 @@ const Header = () => {
             animate={isOpen ? "open" : "closed"}
             variants={{
               closed: {
-                width: "120px",
-                height: "40px",
-                borderRadius: "0px",
-                backgroundColor: "rgba(255, 255, 255, 1)",
-                color: "#000",
+                width: "80px",
+                height: "28px",
+                borderRadius: "24px",
+                backgroundColor: isDarkTheme ? "rgba(0, 0, 0, 1)" : "rgba(255, 255, 255, 1)",
+                color: isDarkTheme ? "#fff" : "#000",
                 scale: 1,
               },
               open: {
-                width: "min(90vw, 400px)",
-                height: "min(85vh, 600px)",
-                borderRadius: "0px",
+                width: "min(90vw, 500px)",
+                height: "min(95vh, 950px)",
+                borderRadius: "24px",
                 backgroundColor: "rgba(0, 0, 0, 1)",
                 color: "#fff",
                 scale: 1,
@@ -89,18 +114,20 @@ const Header = () => {
             }}
             transition={{
               type: "spring",
-              stiffness: 26.7,
-              damping: 4.1,
-              mass: 0.2,
+              stiffness: 80,
+              damping: 15,
+              mass: 1,
               restDelta: 0.001,
+              backgroundColor: { duration: 0.5, ease: "easeInOut" },
+              color: { duration: 0.5, ease: "easeInOut" }
             }}
             className="relative overflow-hidden shadow-2xl flex flex-col items-center"
           >
             {/* Header of the Island */}
-            <div className="flex items-center justify-center w-full h-[40px] shrink-0">
+            <div className="flex items-center justify-center w-full h-[28px] shrink-0">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full h-full flex items-center justify-center font-mono text-[12px] uppercase tracking-widest"
+                className="w-full h-full flex items-center justify-center font-mono text-[8px] uppercase tracking-widest"
               >
                 {isOpen ? "Close" : "Menu"}
               </button>
@@ -193,15 +220,17 @@ const Header = () => {
             href="https://videinfra.com/"
             className="hidden md:flex items-center gap-2 group"
           >
-            <span className="text-[14px] text-white/60 font-medium lowercase italic">by</span>
-            <span className="text-[14px] font-bold tracking-tight uppercase group-hover:text-white/80 transition-colors duration-300">
+            <span className={`text-[10px] font-medium lowercase italic transition-colors duration-500 ${isDarkTheme ? "text-black/60" : "text-white/60"}`}>BY</span>
+            <span className={`text-[10px] font-bold tracking-tight uppercase transition-colors duration-500 ${isDarkTheme ? "text-black group-hover:text-black/80" : "text-white group-hover:text-white/80"}`}>
               Vide Infra
             </span>
           </a>
 
           <a
             href="https://videinfra.com/blog/17-ai-powered-features-that-will-revolutionize-banking-ux"
-            className="flex items-center justify-center h-[40px] px-6 bg-white text-black font-mono text-[11px] uppercase tracking-widest hover:opacity-80 transition-all duration-500"
+            className={`flex items-center justify-center h-[28px] px-3 font-mono text-[9px] uppercase tracking-wide hover:opacity-80 transition-all duration-500 rounded-full ${
+              isDarkTheme ? "bg-black text-white" : "bg-white text-black"
+            }`}
           >
             Full Article
           </a>

@@ -125,14 +125,23 @@ export default function HeroSlider() {
   const nextSlide = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setActiveIndex((prev) => (prev + 1) % sliderData.length);
+    setActiveIndex((prev) => {
+      const next = prev + 1;
+      if (next >= sliderData.length) return prev;
+      return next;
+    });
     setTimeout(() => setIsAnimating(false), 1200);
   }, [isAnimating]);
 
   const prevSlide = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setActiveIndex((prev) => (prev - 1 + sliderData.length) % sliderData.length);
+    setActiveIndex((prev) => {
+      if (prev === sliderData.length - 1) return 0;
+      const next = prev - 1;
+      if (next < 0) return prev;
+      return next;
+    });
     setTimeout(() => setIsAnimating(false), 1200);
   }, [isAnimating]);
 
@@ -140,13 +149,25 @@ export default function HeroSlider() {
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) < 30) return;
-      if (e.deltaY > 0) nextSlide();
-      else prevSlide();
+      const lastIndex = sliderData.length - 1;
+      if (e.deltaY > 0) {
+        if (activeIndex === lastIndex) return;
+        nextSlide();
+      } else {
+        if (activeIndex === lastIndex) {
+          if (isAnimating) return;
+          setIsAnimating(true);
+          setActiveIndex(0);
+          setTimeout(() => setIsAnimating(false), 1200);
+          return;
+        }
+        prevSlide();
+      }
     };
 
     window.addEventListener("wheel", handleWheel);
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [nextSlide, prevSlide]);
+  }, [activeIndex, nextSlide, prevSlide, isAnimating]);
 
   return (
     <section className="relative w-full h-[100vh] overflow-hidden bg-[#010107] select-none">

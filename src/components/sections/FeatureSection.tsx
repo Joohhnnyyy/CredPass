@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -19,10 +19,44 @@ interface FeatureSectionProps {
 }
 
 export default function FeatureSection({ item }: FeatureSectionProps) {
+  const touchStartY = useRef<number | null>(null);
+  const wheelAccumulator = useRef(0);
   return (
     <div 
       className="relative w-screen h-screen flex flex-col md:flex-row items-center justify-between px-[20px] lg:px-[40px] pt-[120px] lg:pt-[100px] pb-[60px] flex-shrink-0 overflow-hidden transition-colors duration-1000"
       style={{ backgroundColor: item.bgColor }}
+      onWheel={(e) => {
+        if (item.id !== 1) return;
+        
+        // Reset accumulator if scrolling in opposite direction
+        if (e.deltaY >= 0) {
+          wheelAccumulator.current = 0;
+          return;
+        }
+
+        wheelAccumulator.current += e.deltaY;
+
+        if (wheelAccumulator.current < -50) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.dispatchEvent(new Event("preloader:show"));
+          wheelAccumulator.current = 0;
+        }
+      }}
+      onTouchStart={(e) => {
+        if (item.id !== 1) return;
+        touchStartY.current = e.changedTouches[0].clientY;
+      }}
+      onTouchEnd={(e) => {
+        if (item.id !== 1) return;
+        const endY = e.changedTouches[0].clientY;
+        if (touchStartY.current !== null && endY - touchStartY.current > 30) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.dispatchEvent(new Event("preloader:show"));
+        }
+        touchStartY.current = null;
+      }}
     >
       {/* Massive Background Number */}
       <motion.div 

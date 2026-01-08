@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { VisualEditsMessenger } from "orchids-visual-edits";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+const graphik = localFont({
+  src: "../../public/fonts/GraphikLCG-Medium.woff2",
+  variable: "--font-graphik",
+  weight: "500",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+const ppNeueMontreal = localFont({
+  src: "../../public/fonts/PPNeueMontreal-Regular.woff2",
+  variable: "--font-pp-neue-montreal",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
+        className={`${graphik.variable} ${ppNeueMontreal.variable} antialiased bg-background text-foreground`}
       >
         {children}
         <VisualEditsMessenger />
