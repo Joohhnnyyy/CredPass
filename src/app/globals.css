@@ -134,6 +134,16 @@
     66% { transform: translate(20%, -40%) scale(0.95); border-radius: 60% 40% 40% 60% / 60% 30% 70% 40%; }
     100% { transform: translate(0, 0) scale(1); border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%; }
   }
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+
+  --animate-aurora: aurora 60s linear infinite;
 }
 
 @layer base {

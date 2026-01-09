@@ -4,6 +4,8 @@ import React, { useRef } from "react";
 import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import NeuralHero from "@/components/ui/neural-network-hero";
 
 interface FeatureSectionProps {
   item: {
@@ -21,51 +23,21 @@ interface FeatureSectionProps {
 export default function FeatureSection({ item }: FeatureSectionProps) {
   const touchStartY = useRef<number | null>(null);
   const wheelAccumulator = useRef(0);
-  return (
-    <div 
-      className="relative w-screen h-screen flex flex-col md:flex-row items-center justify-between px-[20px] lg:px-[40px] pt-[120px] lg:pt-[100px] pb-[60px] flex-shrink-0 overflow-hidden transition-colors duration-1000"
-      style={{ backgroundColor: item.bgColor }}
-      onWheel={(e) => {
-        if (item.id !== 1) return;
-        
-        // Reset accumulator if scrolling in opposite direction
-        if (e.deltaY >= 0) {
-          wheelAccumulator.current = 0;
-          return;
-        }
+  const isAurora = item.id === 1;
 
-        wheelAccumulator.current += e.deltaY;
+  // For the first slide (Neural Hero), we force text color to white for visibility against dark background
+  const effectiveTextColor = isAurora ? "#FFFFFF" : item.textColor;
 
-        if (wheelAccumulator.current < -50) {
-          e.preventDefault();
-          e.stopPropagation();
-          window.dispatchEvent(new Event("preloader:show"));
-          wheelAccumulator.current = 0;
-        }
-      }}
-      onTouchStart={(e) => {
-        if (item.id !== 1) return;
-        touchStartY.current = e.changedTouches[0].clientY;
-      }}
-      onTouchEnd={(e) => {
-        if (item.id !== 1) return;
-        const endY = e.changedTouches[0].clientY;
-        if (touchStartY.current !== null && endY - touchStartY.current > 30) {
-          e.preventDefault();
-          e.stopPropagation();
-          window.dispatchEvent(new Event("preloader:show"));
-        }
-        touchStartY.current = null;
-      }}
-    >
+  const content = (
+    <>
       {/* Massive Background Number */}
       <motion.div 
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 0.1, x: 0 }}
         viewport={{ once: false, amount: 0.1 }}
         transition={{ duration: 1.5, ease: [0.77, 0, 0.175, 1] }}
-        className="huge-number absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none"
-        style={{ color: item.textColor }}
+        className="huge-number absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none z-10"
+        style={{ color: effectiveTextColor }}
       >
         {item.number}
       </motion.div>
@@ -80,7 +52,7 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
         >
           <p 
             className="text-[18px] lg:text-[22px] leading-[1.6] mb-8 max-w-[340px]"
-            style={{ color: item.textColor === "#FFFFFF" ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)" }}
+            style={{ color: effectiveTextColor === "#FFFFFF" ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)" }}
           >
             {item.description}
           </p>
@@ -91,15 +63,15 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
           >
             <span 
               className="mono-label text-[12px] tracking-[0.2em]"
-              style={{ color: item.textColor }}
+              style={{ color: effectiveTextColor }}
             >
               EXPLORE
             </span>
             <div 
               className="w-[50px] h-[50px] border rounded-full flex items-center justify-center transition-all duration-500 group-hover:rotate-90"
               style={{ 
-                borderColor: item.textColor === "#FFFFFF" ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)",
-                color: item.textColor
+                borderColor: effectiveTextColor === "#FFFFFF" ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)",
+                color: effectiveTextColor
               }}
             >
               <Plus size={20} />
@@ -137,11 +109,70 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
           viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="font-display font-semibold text-[48px] md:text-[80px] lg:text-[100px] leading-[1.05] tracking-tight whitespace-pre-line"
-          style={{ color: item.textColor }}
+          style={{ color: effectiveTextColor }}
         >
           {item.title}
         </motion.h2>
       </div>
+    </>
+  );
+
+  const containerClasses = "relative w-screen h-screen flex flex-col md:flex-row items-center justify-between px-[20px] lg:px-[40px] pt-[120px] lg:pt-[100px] pb-[60px] flex-shrink-0 overflow-hidden transition-colors duration-1000";
+  
+  const handleWheel = (e: React.WheelEvent) => {
+    if (item.id !== 1) return;
+    
+    // Reset accumulator if scrolling in opposite direction
+    if (e.deltaY >= 0) {
+      wheelAccumulator.current = 0;
+      return;
+    }
+
+    wheelAccumulator.current += e.deltaY;
+
+    if (wheelAccumulator.current < -50) {
+      // e.preventDefault(); // Removed because it might interfere with passive event listeners in some browsers, but React's synthetic event might handle it.
+      // e.stopPropagation();
+      window.dispatchEvent(new Event("preloader:show"));
+      wheelAccumulator.current = 0;
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (item.id !== 1) return;
+    touchStartY.current = e.changedTouches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (item.id !== 1) return;
+    const endY = e.changedTouches[0].clientY;
+    if (touchStartY.current !== null && endY - touchStartY.current > 30) {
+      // e.preventDefault();
+      // e.stopPropagation();
+      window.dispatchEvent(new Event("preloader:show"));
+    }
+    touchStartY.current = null;
+  };
+
+  if (isAurora) {
+    return (
+      <div className="w-screen h-screen flex-shrink-0" onWheel={handleWheel} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <NeuralHero className={containerClasses}>
+          {content}
+        </NeuralHero>
+      </div>
+    );
+  }
+
+  return (
+    <div 
+      className={containerClasses}
+      style={{ backgroundColor: item.bgColor }}
+      onWheel={handleWheel}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {content}
     </div>
   );
 }

@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 /**

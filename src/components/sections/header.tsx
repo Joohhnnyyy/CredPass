@@ -1,18 +1,19 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUp, ArrowRight, X, LogOut, LogIn, User } from "lucide-react";
+import { ArrowUp, LogOut, LogIn, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sliderData } from "./HeroSlider";
 import { createClient } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const router = useRouter();
   const supabase = createClient();
 
