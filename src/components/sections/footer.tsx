@@ -18,37 +18,31 @@ export default function Footer() {
           <div className="z-10 flex flex-col gap-8 lg:gap-12 max-w-lg">
             <div className="flex flex-col gap-4">
               <a 
-                href="https://videinfra.com/" 
+                href="/" 
                 className="group flex items-baseline gap-1.5 transition-opacity hover:opacity-80"
               >
                 <span className="font-sans text-[16px] lg:text-[18px] text-[#9DA5B4] font-normal leading-none">by</span>
                 <span className="font-sans text-[20px] lg:text-[24px] text-white font-bold tracking-tight leading-none uppercase">
-                  Vide Infra
+                  CredPass
                 </span>
               </a>
               <p className="font-sans text-[14px] lg:text-[16px] text-[#9DA5B4] leading-relaxed max-w-xs">
-                A fresh look at finance UX through the lens of artificial intelligence and human-centric design.
+                Unlock global credibility and make trust portable through secure, privacy-first verification.
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="mono-label text-[#9DA5B4] text-[10px] tracking-[0.2em] mb-2">Developed for</p>
+              <p className="mono-label text-[#9DA5B4] text-[10px] tracking-[0.2em] mb-2">Built for</p>
               <h3 className="font-display text-[24px] lg:text-[32px] text-white font-semibold leading-tight">
-                The Future of <br className="hidden lg:block" /> Banking UX
+                The Future of <br className="hidden lg:block" /> Portable Trust
               </h3>
             </div>
 
             {/* Copyright & Links */}
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-4">
               <span className="font-mono text-[11px] text-[#9DA5B4] tracking-wider uppercase">
-                © {currentYear} VIDE INFRA
+                © {currentYear} CREDPASS
               </span>
-              <a 
-                href="https://videinfra.com/blog/17-ai-powered-features-that-will-revolutionize-banking-ux"
-                className="font-mono text-[11px] text-white hover:text-white/70 transition-colors tracking-wider uppercase underline underline-offset-4"
-              >
-                Full Article
-              </a>
             </div>
           </div>
 

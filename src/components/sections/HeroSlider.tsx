@@ -10,6 +10,7 @@ interface SliderItem {
   title: string;
   description: string;
   image?: string;
+  hasMap?: boolean;
   bgColor: string;
   textColor: string;
   accentColor: string;
@@ -19,9 +20,10 @@ export const sliderData: SliderItem[] = [
   {
     id: 1,
     number: "1",
-    title: "Automated\nExpense\nManagement",
-    description: "AI simplifies finance management, enhancing banking UX with automated support for wise spending and effective saving in-app.",
+    title: "Global Migration\nFinancial Continuity",
+    description: "Credit histories are often confined within national systems. CredPass ensures your financial reputation travels with you, so you don't start from zero.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-1.avif",
+    hasMap: true,
     bgColor: "#F3F3F5",
     textColor: "#000000",
     accentColor: "#9DA5B4",
@@ -29,8 +31,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 2,
     number: "2",
-    title: "Seamless\nPayment\nExperience",
-    description: "In addition to providing financial guidance, the AI simplifies the payment process, making it as seamless as possible.",
+    title: "Portable Trust\nPassport",
+    description: "A privacy-preserving credential that represents your financial behavior rather than raw records, enabling trust to travel across borders.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-2.avif",
     bgColor: "#E5E7EB",
     textColor: "#000000",
@@ -39,8 +41,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 3,
     number: "3",
-    title: "AI-Enhanced\nCost-Efficient\nShopping",
-    description: "AI algorithms monitor real-time prices and analyze purchasing data, informing users about cost-effective deals.",
+    title: "User-Controlled\nConsent",
+    description: "You explicitly authorize CredPass to access your data. No access without consent, and permissions can be revoked at any time.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-3.avif",
     bgColor: "#F9FAFB",
     textColor: "#000000",
@@ -49,8 +51,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 4,
     number: "4",
-    title: "Health\nand\nLifestyle",
-    description: "AI can analyze user behavior, such as travel bookings, significant purchases, or changes in family size, to proactively suggest insurance plans.",
+    title: "Behavioral\nFinancial Analysis",
+    description: "We analyze patterns like salary stability, spending consistency, and repayment discipline—focusing on management, not just income.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-4.avif",
     bgColor: "#F3F4F6",
     textColor: "#000000",
@@ -59,8 +61,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 5,
     number: "5",
-    title: "Family Financial\nManagement",
-    description: "Family Financial Management includes AI-powered features aimed at automating and optimizing the financial responsibilities of family life.",
+    title: "AI-Driven\nTrust Intelligence",
+    description: "Using explainable AI, we convert behavioral patterns into meaningful trust indicators like repayment probability and stability signals.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-5.avif",
     bgColor: "#9B70AD",
     textColor: "#000000",
@@ -69,8 +71,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 6,
     number: "6",
-    title: "Localized\nCost-of-Living\nCalculators",
-    description: "Localized Cost-of-Living Calculators feature AI-powered tools that offer localized budget suggestions tailored to the cost of living in specific regions or cities.",
+    title: "Verifiable Trust\nCredential",
+    description: "Results are packaged into a secure, portable digital trust artifact containing verified claims instead of raw sensitive data.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-6.avif",
     bgColor: "#AF8CBF",
     textColor: "#000000",
@@ -79,8 +81,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 7,
     number: "7",
-    title: "Seamless\nIntegration\nwith IoT Devices",
-    description: "AI bridges the gap by integrating with connected devices, offering real-time financial guidance in the app.",
+    title: "Instant\nVerification",
+    description: "Banks and landlords can verify your CredPass credential using a QR code, gaining confidence without accessing your private bank statements.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-7.avif",
     bgColor: "#6BA587",
     textColor: "#000000",
@@ -89,8 +91,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 8,
     number: "8",
-    title: "Debt Management\nand Loan Options",
-    description: "AI in banking apps assesses debt, forecasts the impact on credit scores, suggests tailored loans for future needs.",
+    title: "Privacy & Security\nBy Design",
+    description: "No raw bank statements are shared. Only verified trust claims are exposed. Immutable records ensure credential integrity.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-8.avif",
     bgColor: "#A7D8EA",
     textColor: "#000000",
@@ -99,8 +101,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 9,
     number: "9",
-    title: "Fully Personalized\nFinancial Strategies",
-    description: "The AI simplifies investment by offering personalized strategies tailored to each user's unique profile.",
+    title: "Responsible &\nExplainable AI",
+    description: "AI outputs are transparent and explainable. CredPass provides decision support, but final decisions remain with institutions.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/feature-9.avif",
     bgColor: "#BDD7EE",
     textColor: "#000000",
@@ -109,8 +111,8 @@ export const sliderData: SliderItem[] = [
   {
     id: 10,
     number: "10",
-    title: "AI-driven\nFeatures",
-    description: "A FRESH LOOK AT FINANCE UX WITH VIDE INFRA",
+    title: "Financial Trust\nWithout Borders",
+    description: "A PRIVACY-PRESERVING FINANCIAL TRUST PASSPORT",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/siri-11.avif",
     bgColor: "#42368C",
     textColor: "#FFFFFF",

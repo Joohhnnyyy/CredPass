@@ -22,42 +22,42 @@ const features: FeatureItem[] = [
   {
     id: 6,
     number: "6",
-    title: ["Localized", "Cost-of-Living", "Calculators"],
-    description: "Localized Cost-of-Living Calculators feature AI-powered tools that offer localized budget suggestions tailored to the cost of living in specific regions or cities.",
+    title: ["Cross-Border", "Credit", "Mobility"],
+    description: "CredPass enables you to carry your credit history across borders, instantly translating your financial reputation for international use.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/slider-6-1_xs-22.webp",
-    alt: "AI-features for banking mobile app design: Localized Cost-of-Living Calculators"
+    alt: "CredPass feature: Cross-Border Credit Mobility"
   },
   {
     id: 7,
     number: "7",
-    title: ["Seamless", "Integration", "with IoT Devices"],
-    description: "AI bridges the gap by integrating with connected devices, offering real-time financial guidance in the app.",
+    title: ["Universal", "API", "Integration"],
+    description: "Seamlessly integrate CredPass with any financial platform or service, allowing for instant verification without data exposure.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/slider-7-1_xs-25.webp",
-    alt: "AI-features in mobile banking app: Seamless Integration with IoT Devices"
+    alt: "CredPass feature: Universal API Integration"
   },
   {
     id: 8,
     number: "8",
-    title: ["Debt", "Management", "and Loan Options"],
-    description: "AI in banking apps assesses debt, forecasts the impact on credit scores, suggests tailored loans for future needs.",
+    title: ["Smart", "Credit", "Translation"],
+    description: "CredPass analyzes your local credit data and translates it into a globally recognized score, unlocking tailored financial opportunities worldwide.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/slider-8-1_xs-26.webp",
-    alt: "AI-features in fintech app: Debt Management and Loan Options"
+    alt: "CredPass feature: Smart Credit Translation"
   },
   {
     id: 9,
     number: "9",
-    title: ["Fully", "Personalized", "Financial Strategies"],
-    description: "The AI simplifies investment by offering personalized strategies tailored to each user's unique profile.",
+    title: ["Zero-Knowledge", "Proof", "Verification"],
+    description: "Verify your financial standing without revealing sensitive underlying data, ensuring complete privacy and security.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/slider-9-1_xs-29.webp",
-    alt: "UI design of banking mobile app with AI-features: Fully Personalized Financial Strategies"
+    alt: "CredPass feature: Zero-Knowledge Proof Verification"
   },
   {
     id: 10,
     number: "10",
-    title: ["Real-time", "Investment", "Updates"],
-    description: "AI monitors investments and offers personalized real-time recommendations in one banking app, adapting to market changes.",
+    title: ["Real-time", "Trust", "Monitoring"],
+    description: "Monitor your global trust score in real-time and get personalized recommendations to improve your international creditworthiness.",
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/slider-9-1_xs-29.webp", // Fallback to 9 as 10 is missing in assets list
-    alt: "AI-driven features of banking mobile app UI: Real-time Investment Updates"
+    alt: "CredPass feature: Real-time Trust Monitoring"
   }
 ];
 

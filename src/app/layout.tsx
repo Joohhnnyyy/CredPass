@@ -16,8 +16,11 @@ const ppNeueMontreal = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AI in Banking UX Design | Vide Infra",
-  description: "10 AI-powered features that will revolutionize banking UX. A fresh look at finance UX through the lens of artificial intelligence and human-centric design.",
+  title: "CredPass",
+  description: "CredPass - Unlock global credibility and make trust portable.",
+  icons: {
+    icon: "/CredPass_logo.png",
+  },
 };
 
 export default function RootLayout({

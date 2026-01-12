@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
  */
 export default function Preloader() {
   const [isVisible, setIsVisible] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [isHiding, setIsHiding] = useState(false);
@@ -63,23 +62,7 @@ export default function Preloader() {
   }, [isVisible]);
   
   // Sequence of numbers for the preloader countdown from the content
-  const numbers = ["2", "4", "6", "8", "10"];
-
-    useEffect(() => {
-      // Animate the counter index
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => {
-          if (prev < numbers.length - 1) return prev + 1;
-          clearInterval(interval);
-          setIsComplete(true);
-          return prev;
-        });
-      }, 400);
-
-      return () => {
-        clearInterval(interval);
-      };
-    }, [numbers.length]);
+  const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
   return (
     <motion.div
@@ -135,10 +118,22 @@ export default function Preloader() {
 
       {/* Counter moved to root level */}
       <div className="absolute top-0 left-0 p-[14px] z-[5] pointer-events-none">
-        <div>
-          <p className="huge-number text-[clamp(8rem,25vw,30rem)] text-white font-normal select-none leading-[0.8] tracking-[-0.15em]">
-            {numbers[currentIndex]}
-          </p>
+        <div className="text-[clamp(8rem,25vw,30rem)] leading-[0.8] tracking-[-0.03em] text-white font-normal select-none font-[family-name:var(--font-pp-neue-montreal)]">
+          <div className="h-[0.8em] overflow-hidden min-w-[2.0em]">
+            <motion.div
+              initial={{ y: "0em" }}
+              animate={{ y: `-${(numbers.length - 1) * 0.8}em` }}
+              transition={{ duration: 4.5, ease: [0.85, 0, 0.15, 1] }}
+              onAnimationComplete={() => setIsComplete(true)}
+              className="flex flex-col"
+            >
+              {numbers.map((num) => (
+                <div key={num} className="h-[0.8em] flex items-start">
+                  {num}
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
 
@@ -148,10 +143,10 @@ export default function Preloader() {
         </div>
 
         {/* Center Section with Small Siri-style Orb and Tip */}
-        <div className="mt-[60px] flex w-full flex-col items-start gap-8 ml-[10vw] md:ml-[12vw] lg:ml-[11.5vw] relative z-10">
+        <div className="mt-[120px] flex w-full flex-col items-start gap-8 ml-[10vw] md:ml-[12vw] lg:ml-[11.5vw] relative z-10">
           <div className="relative flex flex-col justify-between w-[35vw] md:w-[20vw] lg:w-[11vw] h-[40vw] md:h-[22vw] lg:h-[12vw] min-w-[130px] min-h-[140px] rounded-[24px] bg-black p-5 backdrop-blur-xl border border-white/5">
             <p className="font-mono text-[10px] lg:text-[0.6vw] tracking-[0.05em] text-[#9DA5B4] leading-tight z-10 uppercase">
-              A fresh look at<br />finance ux with<br /><span className="text-white font-bold tracking-widest">vide infra</span>
+              A privacy-preserving<br />financial trust<br /><span className="text-white font-bold tracking-widest">passport</span>
             </p>
             <div className="absolute bottom-4 right-4 h-[40px] w-[40px] lg:h-[3.5vw] lg:w-[3.5vw] overflow-hidden rounded-full shadow-[0_5px_15px_rgba(124,58,237,0.5)]">
               <img 
@@ -167,11 +162,11 @@ export default function Preloader() {
         <div className="mt-auto w-full">
           <div className="flex flex-col gap-2">
             <h1 className="flex flex-col text-[clamp(6rem,14vw,14rem)] font-normal tracking-tighter text-white leading-[0.9]">
-              <span className="text-right w-full">AI-driven</span>
+              <span className="text-right w-full">Financial Trust</span>
               <div className="flex items-center gap-8 w-full pl-[25vw]">
-                <span className="text-left translate-x-[-0.02em]">Features</span>
+                <span className="text-left translate-x-[-0.02em]">CredPass</span>
                 <p className="max-w-[180px] font-mono text-[11px] leading-relaxed tracking-wider text-white uppercase -mt-2">
-                  Revolutionizing<br />Banking UX
+                  Without<br />Borders
                 </p>
               </div>
             </h1>

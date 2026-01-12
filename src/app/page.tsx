@@ -16,7 +16,7 @@ export default function Home() {
       <Preloader />
       <Header />
       
-      <HorizontalScroll sectionsCount={totalSections}>
+      <HorizontalScroll sectionsCount={totalSections} data={sliderData}>
         {sliderData.map((item) => (
           <FeatureSection key={item.id} item={item} />
         ))}

@@ -183,6 +183,7 @@
       color: var(--foreground);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      scroll-snap-type: y mandatory;
     }
 
     body {
@@ -199,11 +200,12 @@
     }
 
     .huge-number {
-      font-size: clamp(12rem, 35vw, 40rem);
-      font-weight: 900;
-      line-height: 0.8;
-      pointer-events: none;
-    }
+    font-size: clamp(12rem, 35vw, 40rem);
+    font-weight: 900;
+    line-height: 0.8;
+    pointer-events: none;
+    font-family: var(--font-pp-neue-montreal);
+  }
 
   .sunset-gradient {
     background: linear-gradient(45deg, #3d318c, #e37491);

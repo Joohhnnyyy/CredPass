@@ -126,12 +126,29 @@ const Header = () => {
           >
             {/* Header of the Island */}
             <div className="flex items-center justify-center w-full h-[28px] shrink-0">
-              <button
+              <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full h-full flex items-center justify-center font-mono text-[8px] uppercase tracking-widest"
+                className="w-full h-full flex items-center justify-center font-mono text-[8px] uppercase tracking-widest overflow-hidden"
+                initial="initial"
+                whileHover="hover"
               >
-                {isOpen ? "Close" : "Menu"}
-              </button>
+                <div className="relative h-3 overflow-hidden">
+                  <motion.div
+                    className="flex flex-col"
+                    variants={{
+                      initial: { y: 0 },
+                      hover: { y: "-50%" },
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.76, 0, 0.24, 1],
+                    }}
+                  >
+                    <span className="h-3 flex items-center justify-center">{isOpen ? "Close" : "Menu"}</span>
+                    <span className="h-3 flex items-center justify-center">{isOpen ? "Close" : "Menu"}</span>
+                  </motion.div>
+                </div>
+              </motion.button>
             </div>
 
             {/* Expanded Content */}
@@ -169,7 +186,7 @@ const Header = () => {
                           <div className="grid grid-cols-2 gap-3">
                             <Link
                               href="/auth/login"
-                              className="flex items-center justify-center gap-2 py-3 px-4 rounded-none bg-white text-black font-mono text-[11px] uppercase tracking-wider hover:bg-white/90 transition-all pointer-events-auto"
+                              className="flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-white text-black font-mono text-[11px] uppercase tracking-wider hover:bg-white/90 transition-all pointer-events-auto"
                               onClick={() => setIsOpen(false)}
                             >
                               <LogIn size={14} />
@@ -177,7 +194,7 @@ const Header = () => {
                             </Link>
                             <Link
                               href="/auth/signup"
-                              className="flex items-center justify-center gap-2 py-3 px-4 rounded-none bg-white/5 border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider hover:bg-white/10 transition-all pointer-events-auto"
+                              className="flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-white/5 border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider hover:bg-white/10 transition-all pointer-events-auto"
                               onClick={() => setIsOpen(false)}
                             >
                               Signup
