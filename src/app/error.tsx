@@ -6,7 +6,13 @@ type ErrorProps = {
 };
 
 export default function ErrorBoundary({ error, reset }: ErrorProps) {
-  if (error.name === "AbortError" || error.message === "The operation was aborted.") {
+  const message = error.message || "";
+
+  if (
+    error.name === "AbortError" ||
+    message === "The operation was aborted." ||
+    message.toLowerCase().includes("signal is aborted")
+  ) {
     return null;
   }
 
@@ -22,4 +28,3 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
     </div>
   );
 }
-

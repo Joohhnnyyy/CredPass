@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { VisualEditsMessenger } from "orchids-visual-edits";
 
 const graphik = localFont({
   src: "../../public/fonts/GraphikLCG-Medium.woff2",
@@ -34,7 +33,6 @@ export default function RootLayout({
         className={`${graphik.variable} ${ppNeueMontreal.variable} antialiased bg-background text-foreground`}
       >
         {children}
-        <VisualEditsMessenger />
       </body>
     </html>
   );

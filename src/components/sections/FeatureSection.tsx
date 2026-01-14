@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import WorldMap from "@/components/ui/world-map";
 import ColorBends from "@/components/ColorBends";
+import { CreditCard } from "@/components/ui/credit-card";
+import { PassportCard } from "@/components/ui/passport-card";
 
 interface FeatureSectionProps {
   item: {
@@ -20,6 +22,140 @@ interface FeatureSectionProps {
     textColor: string;
     accentColor: string;
   };
+}
+
+function CreditCardsFanStack() {
+  const [cardsHovered, setCardsHovered] = useState(false);
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleHoverStart = () => {
+    setCardsHovered(true);
+    if (settleTimer.current) {
+      clearTimeout(settleTimer.current);
+      settleTimer.current = null;
+    }
+  };
+
+  const handleHoverEnd = () => {
+    if (settleTimer.current) {
+      clearTimeout(settleTimer.current);
+    }
+    settleTimer.current = setTimeout(() => {
+      setCardsHovered(false);
+    }, 700);
+  };
+
+  return (
+    <motion.div
+      className="relative w-[340px] h-[220px] cursor-pointer preserve-3d"
+      initial="initial"
+      animate={cardsHovered ? "animate" : "initial"}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
+    >
+      <motion.div
+        className="absolute top-0 left-0 z-40"
+        variants={{
+          initial: { x: 0, y: 0, rotate: 0, rotateX: 0, rotateY: 0 },
+          animate: { x: -120, y: -20, rotate: -15, rotateX: 5, rotateY: -5 },
+        }}
+        transition={{ type: "spring", stiffness: 150, damping: 20, mass: 1 }}
+        whileHover={{
+          scale: 1.1,
+          zIndex: 50,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+      >
+        <CreditCard
+          brand="visa"
+          variant="black"
+          cardHolder="TRUST HOLDER"
+          cardNumber="4242 4242 4242 4242"
+        />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-0 left-0 z-10"
+        variants={{
+          initial: { x: 0, y: 0, rotate: 0, rotateX: 0, rotateY: 0 },
+          animate: { x: -40, y: 10, rotate: -5, rotateX: 4, rotateY: -2 },
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 20,
+          mass: 1,
+          delay: 0.04,
+        }}
+        whileHover={{
+          scale: 1.1,
+          zIndex: 50,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+      >
+        <CreditCard
+          brand="mastercard"
+          variant="gradient"
+          cardHolder="GLOBAL TRUST"
+          cardNumber="5555 5555 5555 4444"
+        />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-0 left-0 z-20"
+        variants={{
+          initial: { x: 0, y: 0, rotate: 0, rotateX: 0, rotateY: 0 },
+          animate: { x: 40, y: 10, rotate: 5, rotateX: 4, rotateY: 2 },
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 20,
+          mass: 1,
+          delay: 0.08,
+        }}
+        whileHover={{
+          scale: 1.1,
+          zIndex: 50,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+      >
+        <CreditCard
+          brand="amex"
+          variant="platinum"
+          cardHolder="PRIME TIER"
+          cardNumber="3782 822463 10005"
+        />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-0 left-0 z-30"
+        variants={{
+          initial: { x: 0, y: 0, rotate: 0, rotateX: 0, rotateY: 0 },
+          animate: { x: 120, y: -20, rotate: 15, rotateX: 5, rotateY: 5 },
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 20,
+          mass: 1,
+          delay: 0.12,
+        }}
+        whileHover={{
+          scale: 1.1,
+          zIndex: 50,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+      >
+        <CreditCard
+          brand="discover"
+          variant="rose-gold"
+          cardHolder="RISING SCORE"
+          cardNumber="6011 1111 1111 1117"
+        />
+      </motion.div>
+    </motion.div>
+  );
 }
 
 export default function FeatureSection({ item }: FeatureSectionProps) {
@@ -64,20 +200,37 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
 
       {/* Column 2: Visual Center (3D Asset) */}
       <div className="flex-1 order-3 md:order-2 flex items-center justify-center relative z-20 h-full w-full max-w-[500px] md:max-w-none">
-        {item.image && !item.hasMap && (
+        {item.id === 2 ? (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative w-full max-w-[400px] aspect-square"
+            initial={{ opacity: 0, scale: 0.85, x: 0 }}
+            whileInView={{ opacity: 1, scale: 1, x: 160 }}
+            transition={{ duration: 0.9 }}
+            className="flex flex-col md:flex-row items-center justify-center gap-6 w-full max-w-[520px]"
           >
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className="object-contain"
-            />
+            <div className="w-full md:w-1/2 flex items-center justify-center">
+              <PassportCard />
+            </div>
+            <div className="w-full md:w-1/2 flex items-center justify-center">
+              <CreditCardsFanStack />
+            </div>
           </motion.div>
+        ) : (
+          item.image &&
+          !item.hasMap && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative w-full max-w-[400px] aspect-square"
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-contain"
+              />
+            </motion.div>
+          )
         )}
       </div>
 
