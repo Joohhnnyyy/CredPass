@@ -194,8 +194,6 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
         item.id === 3
           ? {
               backgroundColor: "#aca0b8",
-              backgroundImage:
-                "linear-gradient(to right,#E5E7EB 0%,#E5E7EB 25%,#aca0b8 60%,#aca0b8 100%)",
             }
           : item.id === 4
           ? {

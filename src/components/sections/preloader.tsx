@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -149,10 +150,13 @@ export default function Preloader() {
               A privacy-preserving<br />financial trust<br /><span className="text-white font-bold tracking-widest">passport</span>
             </p>
             <div className="absolute bottom-4 right-4 h-[40px] w-[40px] lg:h-[3.5vw] lg:w-[3.5vw] overflow-hidden rounded-full shadow-[0_5px_15px_rgba(124,58,237,0.5)]">
-              <img 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/4a4bd797-4236-4bdf-9f89-b0e30f388317-ai-in-banking-ux-design-videinfra-com/assets/images/siri-11.avif" 
-                alt="Siri Orb" 
+              <Image
+                src="/siri.avif"
+                alt="Siri Orb"
                 className="w-full h-full object-cover"
+                width={160}
+                height={160}
+                unoptimized
               />
             </div>
           </div>

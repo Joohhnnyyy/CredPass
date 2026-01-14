@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from "framer-motion";
 
 interface HorizontalScrollProps {
   children: React.ReactNode;
@@ -18,13 +18,6 @@ export default function HorizontalScroll({ children, sectionsCount, data }: Hori
     offset: ["start start", "end end"]
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 35,
-    mass: 1,
-    restDelta: 0.001
-  });
-
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     // Calculate index based on scroll progress (0 to 1)
     // 0 -> index 0
@@ -39,11 +32,7 @@ export default function HorizontalScroll({ children, sectionsCount, data }: Hori
     }
   });
 
-  const translateX = useTransform(
-    smoothProgress, 
-    [0, 1], 
-    ["0vw", `-${(sectionsCount - 1) * 100}vw`]
-  );
+  const translateX = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(sectionsCount - 1) * 100}vw`]);
 
   return (
     <section ref={targetRef} style={{ height: `${sectionsCount * 100}vh` }} className="relative bg-white">

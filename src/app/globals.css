@@ -240,6 +240,8 @@
 
   body {
     @apply bg-background text-foreground;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
   }
 }
 
