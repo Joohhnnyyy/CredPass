@@ -304,3 +304,5 @@ Before using CredPass in production or for commercial purposes, ensure you have:
 - Appropriate licenses
 - Legal review for privacy, compliance, and data‑handling obligations
 - Security review for any backend and data infrastructure you connect to this frontend.
+
+See the [LICENSE](./LICENSE) file in this repository for the full license text.

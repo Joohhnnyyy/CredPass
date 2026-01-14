@@ -190,11 +190,98 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
   return (
     <div 
       className={containerClasses}
-      style={{ backgroundColor: item.bgColor }}
+      style={
+        item.id === 3
+          ? {
+              backgroundColor: "#aca0b8",
+              backgroundImage:
+                "linear-gradient(to right,#E5E7EB 0%,#E5E7EB 25%,#aca0b8 60%,#aca0b8 100%)",
+            }
+          : item.id === 4
+          ? {
+              backgroundColor: "#c3cbee",
+            }
+          : item.id === 5
+          ? {
+              backgroundColor: "#ffccfe",
+            }
+          : item.id === 7
+          ? {
+              backgroundColor: "#92bba8",
+            }
+          : item.id === 8
+          ? {
+              backgroundColor: "#b4e7e8",
+            }
+          : item.id === 9
+          ? {
+              backgroundColor: "#c7d8f1",
+            }
+          : item.id === 10
+          ? {
+              backgroundColor: "#f8cdfe",
+            }
+          : { backgroundColor: item.bgColor }
+      }
       onWheel={handleWheel}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      {item.id === 3 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full opacity-70"
+            rotation={45} 
+            speed={0.2} 
+            colors={["#e392fe","#c0c0c0","#606060","#e392fe","#e392fe","#d357fe"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+        </div>
+      )}
+      {item.id === 4 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full opacity-80"
+            rotation={50} 
+            speed={0.2} 
+            colors={["#99a7cd","#001cce","#909dc6","#63a1cf","#bac2ea","#bdc5ea"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+        </div>
+      )}
+      {item.id === 5 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full"
+            rotation={55} 
+            speed={0.2} 
+            colors={["#845cd0","#990e0e","#875cab","#f974c8","#a16fa3","#b27dab"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#E5E7EB] to-transparent z-10 pointer-events-none" />
+        </div>
+      )}
       {item.id === 2 && (
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <ColorBends 
@@ -211,8 +298,97 @@ export default function FeatureSection({ item }: FeatureSectionProps) {
             parallax={0.8} 
             noise={0.05} 
           /> 
-          {/* Gradient Blend from Page 1 */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#E5E7EB] to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#E5E7EB] to-transparent z-10 pointer-events-none" />
+        </div>
+      )}
+      {item.id === 6 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full"
+            rotation={45} 
+            speed={0.2} 
+            colors={["#cd9ace","#003fad","#0061b9","#ff3456","#668d3f","#a877a8"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+        </div>
+      )}
+      {item.id === 7 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full"
+            rotation={45} 
+            speed={0.2} 
+            colors={["#76a48b","#00ef04","#ff0000","#499465","#668d3f","#489966"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+        </div>
+      )}
+      {item.id === 8 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full"
+            rotation={45} 
+            speed={0.2} 
+            colors={["#76a48b","#0058ff","#1400ff","#d55600","#5cd7ff","#b0eaff"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+        </div>
+      )}
+      {item.id === 9 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full"
+            rotation={45} 
+            speed={0.2} 
+            colors={["#aacaec","#4a7ec8","#00c4d5","#919500","#5cd7ff","#e6ecff"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
+        </div>
+      )}
+      {item.id === 10 && (
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <ColorBends 
+            className="w-full h-full"
+            rotation={45} 
+            speed={0.2} 
+            colors={["#d8b4e7","#6d002e","#2f57ac","#ebbef7","#9776a1","#dd0000"]} 
+            transparent 
+            autoRotate={0.6} 
+            scale={3} 
+            frequency={1} 
+            warpStrength={1} 
+            mouseInfluence={0.1} 
+            parallax={0.8} 
+            noise={0.05} 
+          /> 
         </div>
       )}
       {content}

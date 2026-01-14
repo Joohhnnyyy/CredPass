@@ -71,6 +71,13 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full h-[100px] z-[100] transition-colors duration-500 bg-transparent pointer-events-none">
+      <motion.div
+        aria-hidden
+        className="fixed inset-0 bg-white pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.7, ease: "easeInOut" }}
+      />
       <div className={`relative flex items-center justify-between h-full px-[20px] lg:px-[40px] w-full transition-colors duration-500 ${isDarkTheme ? "text-black" : "text-white"}`}>
         {/* Left: Scroll to Top */}
         <div className="flex items-center gap-4 pointer-events-auto">
@@ -107,7 +114,7 @@ const Header = () => {
               open: {
                 width: "min(90vw, 500px)",
                 height: "min(95vh, 950px)",
-                borderRadius: "24px",
+                borderRadius: "40px",
                 backgroundColor: "rgba(0, 0, 0, 1)",
                 color: "#fff",
                 scale: 1,
@@ -238,8 +245,22 @@ const Header = () => {
             href="https://videinfra.com/"
             className="hidden md:flex items-center gap-2 group"
           >
-            <span className={`text-[10px] font-medium lowercase italic transition-colors duration-500 ${isDarkTheme ? "text-black/60" : "text-white/60"}`}>BY</span>
-            <span className={`text-[10px] font-bold tracking-tight uppercase transition-colors duration-500 ${isDarkTheme ? "text-black group-hover:text-black/80" : "text-white group-hover:text-white/80"}`}>
+            <span
+              className={`text-[10px] font-medium lowercase italic transition-colors duration-500 ${
+                isOpen ? "text-black/60" : isDarkTheme ? "text-black/60" : "text-white/60"
+              }`}
+            >
+              BY
+            </span>
+            <span
+              className={`text-[10px] font-bold tracking-tight uppercase transition-colors duration-500 ${
+                isOpen
+                  ? "text-black group-hover:text-black/80"
+                  : isDarkTheme
+                    ? "text-black group-hover:text-black/80"
+                    : "text-white group-hover:text-white/80"
+              }`}
+            >
               Vide Infra
             </span>
           </a>
@@ -247,7 +268,11 @@ const Header = () => {
           <a
             href="https://videinfra.com/blog/17-ai-powered-features-that-will-revolutionize-banking-ux"
             className={`flex items-center justify-center h-[28px] px-3 font-mono text-[9px] uppercase tracking-wide hover:opacity-80 transition-all duration-500 rounded-full ${
-              isDarkTheme ? "bg-black text-white" : "bg-white text-black"
+              isOpen
+                ? "bg-white text-black"
+                : isDarkTheme
+                  ? "bg-black text-white"
+                  : "bg-white text-black"
             }`}
           >
             Full Article
