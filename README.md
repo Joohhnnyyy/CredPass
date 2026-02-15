@@ -4,6 +4,9 @@ CredPass is a privacyâ€‘preserving financial trust platform that turns a personâ
 
 Live demo: https://credpass.vercel.app
 
+Requirements.md: [requirements.md](requirements.md)
+Design.md: [design.md](design.md)
+
 ---
 
 ## Overview
