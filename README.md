@@ -6,7 +6,7 @@ Live demo: https://credpass.vercel.app
 
 Requirements.md: [requirements.md](requirements.md)
 
-Design.md: [design.md](design.md)
+Design.md: [design.md](design.md) 
 
 ---
 
